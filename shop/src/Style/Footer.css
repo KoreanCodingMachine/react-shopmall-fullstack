@@ -1,0 +1,8 @@
+.title{
+    display: block;
+    margin: 0 auto;
+}
+
+.footer{
+    transform: translateX(8%);
+}

@@ -1,0 +1,19 @@
+.title{
+    width: 200px;
+    margin: 0 auto;
+}
+
+.cart-btn{
+    width: 267px;
+    margin: 0 auto;
+    margin-top:400px !important;
+}
+
+.btn-more{
+    width: 150px;
+}
+
+.box{
+    border: 1px solid gray;
+    height: 600px;
+}

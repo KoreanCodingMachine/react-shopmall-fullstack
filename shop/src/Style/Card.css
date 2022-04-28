@@ -1,0 +1,15 @@
+.card-container{
+   margin-left: 120px;
+}
+
+.real-card{
+    margin-top: 150px !important;
+    margin-left: 80px;
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.real-card:hover{
+  opacity: 0.8;
+}
+

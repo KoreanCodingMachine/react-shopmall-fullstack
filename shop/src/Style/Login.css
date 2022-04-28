@@ -1,0 +1,37 @@
+.login-btn{
+    width: 100%;
+}
+
+.icon{
+    background-color: white;
+}
+
+.icon-facebook{
+    color: blue;
+}
+
+.icon-google{
+    color:black;
+}
+
+.form{
+    margin-top: 80px;
+}
+
+.id {
+    padding: 15px;
+    border: 0;
+    background: #f2f2f2;
+}
+
+.pw {
+    padding: 15px;
+    border: 0;
+    background: #f2f2f2;
+}
+
+.login {
+    padding: 15px;
+    border: 0;
+    background: #4CAF50;
+}
