@@ -5,48 +5,21 @@ import Cards from './Component/Card';
 import Carousels from './Component/Carousel';
 import Title from './Component/Title';
 import Footer from './Component/Footer';
+import { useQuery } from 'react-query';
+import axios from 'axios';
 import { useState } from 'react';
 import './App.css';
 
 function App() {
-  let [cardList, setCardList] = useState([
-    {
-      id: 0,
-      title: 'White and Black',
-      content: 'Born in France',
-      price: 120000,
-    },
-    {
-      id: 1,
-      title: 'White and Black',
-      content: 'Born in France',
-      price: 120000,
-    },
-    {
-      id: 2,
-      title: 'White and Black',
-      content: 'Born in France',
-      price: 120000,
-    },
-    {
-      id: 3,
-      title: 'White and Black',
-      content: 'Born in France',
-      price: 120000,
-    },
-    {
-      id: 4,
-      title: 'White and Black',
-      content: 'Born in France',
-      price: 120000,
-    },
-    {
-      id: 5,
-      title: 'White and Black',
-      content: 'Born in France',
-      price: 120000,
-    },
-  ]);
+  const getProduct = async () => {
+    const response = await axios.get('/api/product');
+    return response.data;
+  };
+
+  const { data, isLoading, isError } = useQuery('todos', getProduct);
+  if (isLoading) {
+    return <div>loading</div>;
+  }
 
   return (
     <div className='App-row'>
@@ -55,8 +28,8 @@ function App() {
       <Carousels />
       <Title className='text-center' />
       <div className='card-box row'>
-        {cardList.map((card) => {
-          return <Cards card={card} cardList={cardList} />;
+        {data.map((a, i) => {
+          return <Cards data={a} index={i} />;
         })}
       </div>
       <div className='row'>

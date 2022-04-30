@@ -10,6 +10,7 @@ const ObjectId = Schema.ObjectId;
 const Product = new Schema({
   title: String,
   price: Number,
+  sort: Number,
 });
 
 dbConnect();

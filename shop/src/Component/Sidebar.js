@@ -1,6 +1,5 @@
 /*eslint-disable */
 import React from 'react';
-import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import '../Style/Sidebar.css';
 
@@ -26,7 +25,11 @@ export default function Sidebar() {
   return (
     <div class='sidenav'>
       {state.map((a, i) => {
-        return <a href='#'>{a}</a>;
+        return (
+          <a onClick={() => {}} href='#'>
+            {a}
+          </a>
+        );
       })}
 
       <br />
