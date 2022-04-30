@@ -8,6 +8,18 @@ import SignUp from './Component/SignUp';
 import Detail from './Component/Detail';
 import Cart from './Component/Cart';
 import MyPage from './Component/MyPage';
+import New from './Component/New';
+import Today from './Component/Today';
+import Outer from './Component/Outer';
+import UP from './Component/UP';
+import Shirt from './Component/Shirt';
+import Neet from './Component/Neet';
+import Pants from './Component/Pants';
+import Training from './Component/Training';
+import Shoes from './Component/Shoes';
+import Accessory from './Component/Accessory';
+import Sale from './Component/Sale';
+
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
@@ -67,7 +79,17 @@ root.render(
             <Route path='/signUp' element={<SignUp />} />
             <Route path='/detail/:id' element={<Detail />} />
             <Route path='/cart' element={<Cart />} />
-            <Route path='/mypage' element={<MyPage />} />
+            <Route path='/new' element={<New />} />
+            <Route path='/today' element={<Today />} />
+            <Route path='/outer' element={<Outer />} />
+            <Route path='/up' element={<UP />} />
+            <Route path='/shirt' element={<Shirt />} />
+            <Route path='/neet' element={<Neet />} />
+            <Route path='/pants' element={<Pants />} />
+            <Route path='/training' element={<Training />} />
+            <Route path='/shoes' element={<Shoes />} />
+            <Route path='/accessory' element={<Accessory />} />
+            <Route path='/sale' element={<Sale />} />
           </Routes>
         </QueryClientProvider>
       </Provider>
