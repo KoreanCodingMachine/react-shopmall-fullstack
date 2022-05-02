@@ -6,26 +6,20 @@ import '../Style/Detail.css';
 
 export default function Detail() {
   const { id } = useParams();
-  const history = useNavigate();
-  const location = useLocation();
-  //   let find_item = props.card.find((item) => {
-  //     return item.id === id;
-  //   });
+  // const history = useNavigate();
+  const { state } = useLocation();
+
   useEffect(() => {
-    // console.log(id);
-    // console.log(history);
-    console.log(location);
-    console.log(history);
-    console.log(id);
+    console.log(state);
   }, []);
   return (
     <div className='container'>
       <div className='row'>
         <div className='col-md-6'>
-          <img src={location.state.img} width='100%' />
+          <img src={state.img} width='60%' />
         </div>
         <div className='col-md-6 mt-4'>
-          <h4 className='pt-5'>{location.state.title}</h4>
+          <h4 className='pt-5'>{state.title}</h4>
           <p className='pt-3'>
             매년 꾸준한 사랑을 받고 있는 링클프리 아이스 쿨링 반팔티가 재입고
             되었습니다 : ) 3장 묶음 패키지로 진행하는 구성으로 무엇보다 착한
@@ -38,28 +32,20 @@ export default function Detail() {
             MODEL - Model : 181cm, 67kg - 화이트,베이지,블랙,실버그레이(3 Size)
             착용
           </p>
-          <p className='pt-3'>{location.state.price}원 (800원 세트할인)</p>
+          <p className='pt-3'>{state.price}원 (800원 세트할인)</p>
         </div>
       </div>
       <div className='row'>
-        <div className='col-md-3'>
-          <img
-            src='https://codingapple1.github.io/shop/shoes1.jpg'
-            width='100%'
-          />
-        </div>
+        <div className='col-md-3'></div>
         <div className='col-md-3'></div>
         <div className='col-md-6'>
           <div className='purchase-box row'>
             <div className='col-5'>
-              <img
-                src='https://codingapple1.github.io/shop/shoes1.jpg'
-                width='100%'
-              />
+              <img src={state.img} width='100%' />
             </div>
             <div className='col-7'>
               <p className='pt-3'>아이스 쿨링 반팔티 (1개씩 구매되는 상품)</p>
-              <p>{location.state.content}</p>
+              <p>{}</p>
               <p className='mt-3'>색상</p>
               <Dropdowns />
               <p className='mt-3'>사이즈</p>

@@ -1,9 +1,6 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
-import { Route, Link } from 'react-router-dom';
-import { useQuery } from 'react-query';
-import { useState } from 'react';
-import axios from 'axios';
+import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import '../Style/Card.css';
 
 // json data 받은걸로 map 함수 써서 해보자
@@ -11,14 +8,16 @@ import '../Style/Card.css';
 export default function Cards({ data }) {
   // console.log(card);
   // console.log(cardList);
+  console.log(data);
   return (
     <Card className='real-card col-lg-3'>
       <Link
-        to={`Detail/${data.id}`}
+        to={`Detail/${data._id}`}
         state={{
           id: data.id,
           title: data.title,
           price: data.price,
+          img: data.img,
         }}
       >
         <Card.Img
