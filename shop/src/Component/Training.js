@@ -9,7 +9,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import '../App.css';
 
-function New() {
+function Training() {
   const getProduct = async () => {
     const response = await axios.get('/api/product');
     return response.data;
@@ -47,4 +47,4 @@ function New() {
   );
 }
 
-export default New;
+export default Training;

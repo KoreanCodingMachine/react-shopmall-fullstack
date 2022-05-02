@@ -15,15 +15,14 @@ export default function Detail() {
     // console.log(id);
     // console.log(history);
     console.log(location);
+    console.log(history);
+    console.log(id);
   }, []);
   return (
     <div className='container'>
       <div className='row'>
         <div className='col-md-6'>
-          <img
-            src='https://codingapple1.github.io/shop/shoes1.jpg'
-            width='100%'
-          />
+          <img src={location.state.img} width='100%' />
         </div>
         <div className='col-md-6 mt-4'>
           <h4 className='pt-5'>{location.state.title}</h4>
