@@ -1,6 +1,7 @@
 /*eslint-disable */
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../Style/Sidebar.css';
 
 export default function Sidebar() {
@@ -22,14 +23,26 @@ export default function Sidebar() {
     'REVIEW',
   ]);
 
+  const [link, setLink] = useState([
+    '/',
+    '/new',
+    '/today',
+    '/',
+    '/outer',
+    '/up',
+    '/shirt',
+    '/neet',
+    '/pants',
+    '/training',
+    '/shoes',
+    '/accessory',
+    '/sale',
+  ]);
+
   return (
     <div class='sidenav'>
       {state.map((a, i) => {
-        return (
-          <a onClick={() => {}} href='#'>
-            {a}
-          </a>
-        );
+        return <Link to={`${link[i]}`}>{a}</Link>;
       })}
 
       <br />

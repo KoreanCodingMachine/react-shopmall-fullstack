@@ -7,7 +7,6 @@ import Title from './Component/Title';
 import Footer from './Component/Footer';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import { useState } from 'react';
 import './App.css';
 
 function App() {

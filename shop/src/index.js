@@ -78,6 +78,7 @@ root.render(
             <Route path='/login' element={<Login />} />
             <Route path='/signUp' element={<SignUp />} />
             <Route path='/detail/:id' element={<Detail />} />
+            <Route path='/mypage' element={<MyPage />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/new' element={<New />} />
             <Route path='/today' element={<Today />} />
