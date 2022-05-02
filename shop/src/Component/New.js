@@ -6,7 +6,6 @@ import Carousels from './Carousel';
 import Title from './Title';
 import Footer from './Footer';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../App.css';
 
@@ -24,8 +23,6 @@ function New() {
   const newData = data.filter((a, i) => {
     return a.sort === 1;
   });
-
-  console.log(newData.img);
 
   return (
     <div className='App-row'>

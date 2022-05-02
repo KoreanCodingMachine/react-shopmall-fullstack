@@ -6,3 +6,7 @@
 .carousel-item{
     width: 100%;
 }
+
+.carousel-img{
+    height: 400px;
+}
