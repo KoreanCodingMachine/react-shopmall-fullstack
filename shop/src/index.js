@@ -81,16 +81,27 @@ root.render(
             <Route path='/mypage' element={<MyPage />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/new' element={<New />} />
+            <Route path='/new/detail/:id' element={<Detail />} />
             <Route path='/today' element={<Today />} />
+            <Route path='/today/detail/:id' element={<Detail />} />
             <Route path='/outer' element={<Outer />} />
+            <Route path='/outer/detail/:id' element={<Detail />} />
             <Route path='/up' element={<UP />} />
+            <Route path='/up/detail/:id' element={<Detail />} />
             <Route path='/shirt' element={<Shirt />} />
+            <Route path='/shirt/detail/:id' element={<Detail />} />
             <Route path='/neet' element={<Neet />} />
+            <Route path='/neet/detail/:id' element={<Detail />} />
             <Route path='/pants' element={<Pants />} />
+            <Route path='/pants/detail/:id' element={<Detail />} />
             <Route path='/training' element={<Training />} />
+            <Route path='/training/detail/:id' element={<Detail />} />
             <Route path='/shoes' element={<Shoes />} />
+            <Route path='/shoes/detail/:id' element={<Detail />} />
             <Route path='/accessory' element={<Accessory />} />
+            <Route path='/accessory/detail/:id' element={<Detail />} />
             <Route path='/sale' element={<Sale />} />
+            <Route path='/sale/detail/:id' element={<Detail />} />
           </Routes>
         </QueryClientProvider>
       </Provider>

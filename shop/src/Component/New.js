@@ -6,6 +6,7 @@ import Carousels from './Carousel';
 import Title from './Title';
 import Footer from './Footer';
 import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../App.css';
 
