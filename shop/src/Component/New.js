@@ -24,7 +24,7 @@ function New() {
     return a.sort === 1;
   });
 
-  console.log(newData);
+  console.log(newData.img);
 
   return (
     <div className='App-row'>

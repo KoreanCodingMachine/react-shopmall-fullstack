@@ -11,7 +11,6 @@ import '../Style/Card.css';
 export default function Cards({ data }) {
   // console.log(card);
   // console.log(cardList);
-
   return (
     <Card className='real-card col-lg-3'>
       <Link
@@ -23,11 +22,10 @@ export default function Cards({ data }) {
         }}
       >
         <Card.Img
-          onClick={() => {}}
           className='card-img'
           variant='top'
-          src='./logo192.png'
-          style={{ backgroundColor: 'white' }}
+          src={data.img}
+          style={{ backgroundColor: 'white', width: '100%' }}
         />
       </Link>
       {/* src = this.props.card.image */}
