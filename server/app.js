@@ -23,4 +23,9 @@ app.post('/api/account', async function (req, res) {
   res.send('success');
 });
 
+app.post('/api/login', async function (req, res) {
+  console.log(req.body);
+  res.send('success');
+});
+
 app.listen(4000);
