@@ -3,23 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Test from './Test';
 import Login from './Component/Login';
 import SignUp from './Component/SignUp';
 import Detail from './Component/Detail';
 import Cart from './Component/Cart';
 import MyPage from './Component/MyPage';
 import New from './Component/New';
-import Today from './Component/Today';
-import Outer from './Component/Outer';
-import UP from './Component/UP';
-import Shirt from './Component/Shirt';
-import Neet from './Component/Neet';
-import Pants from './Component/Pants';
-import Training from './Component/Training';
-import Shoes from './Component/Shoes';
-import Accessory from './Component/Accessory';
-import Sale from './Component/Sale';
-
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
@@ -66,6 +56,20 @@ function reducer2(state = basic_state2, action) {
 
 let store = createStore(combineReducers({ reducer, reducer2 }));
 
+export const productRouteList = [
+  { path: '/new', category: 1, name: 'NEW' },
+  { path: '/today', category: 2, name: '당일배송' },
+  { path: '/outer', category: 3, name: '아우터' },
+  { path: '/up', category: 4, name: '상의' },
+  { path: '/shirt', category: 5, name: '셔츠' },
+  { path: '/neet', category: 6, name: '니트/가디건' },
+  { path: '/pants', category: 7, name: '팬츠' },
+  { path: '/training', category: 8, name: '트레이닝' },
+  { path: '/shoes', category: 9, name: '신발' },
+  { path: '/accessory', category: 10, name: '악세사리' },
+  { path: '/sale', category: 11, name: '세일' },
+];
+
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -80,35 +84,24 @@ root.render(
             <Route path='/detail/:id' element={<Detail />} />
             <Route path='/mypage' element={<MyPage />} />
             <Route path='/cart' element={<Cart />} />
-            <Route path='/new' element={<New />} />
-            <Route path='/new/detail/:id' element={<Detail />} />
-            <Route path='/today' element={<Today />} />
-            <Route path='/today/detail/:id' element={<Detail />} />
-            <Route path='/outer' element={<Outer />} />
-            <Route path='/outer/detail/:id' element={<Detail />} />
-            <Route path='/up' element={<UP />} />
-            <Route path='/up/detail/:id' element={<Detail />} />
-            <Route path='/shirt' element={<Shirt />} />
-            <Route path='/shirt/detail/:id' element={<Detail />} />
-            <Route path='/neet' element={<Neet />} />
-            <Route path='/neet/detail/:id' element={<Detail />} />
-            <Route path='/pants' element={<Pants />} />
-            <Route path='/pants/detail/:id' element={<Detail />} />
-            <Route path='/training' element={<Training />} />
-            <Route path='/training/detail/:id' element={<Detail />} />
-            <Route path='/shoes' element={<Shoes />} />
-            <Route path='/shoes/detail/:id' element={<Detail />} />
-            <Route path='/accessory' element={<Accessory />} />
-            <Route path='/accessory/detail/:id' element={<Detail />} />
-            <Route path='/sale' element={<Sale />} />
-            <Route path='/sale/detail/:id' element={<Detail />} />
+            {productRouteList.map((a, i) => {
+              return (
+                <>
+                  <Route
+                    path={a.path}
+                    element={<New category={a.category} />}
+                  />
+                  <Route path={`${a.path}/detail/:id`} element={<Detail />} />
+                </>
+              );
+            })}
           </Routes>
         </QueryClientProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
-
+// root.render(<Test></Test>);
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

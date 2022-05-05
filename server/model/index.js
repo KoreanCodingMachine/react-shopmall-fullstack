@@ -12,6 +12,7 @@ const Product = new Schema({
   price: Number,
   sort: Number,
   img: String,
+  category: Number,
 });
 
 dbConnect();

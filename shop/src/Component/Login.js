@@ -3,9 +3,13 @@ import React from 'react';
 // import { useState } from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import '../Style/Login.css';
 
 export default function Login() {
+  const idReference = useRef();
+  const pwReference = useRef();
+
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState();
 
@@ -18,14 +22,10 @@ export default function Login() {
   // };
 
   const onSubmit = (e) => {
-    e.prevendDefault();
+    e.preventDefault();
+    console.log(idReference.current.value);
+    console.log(pwReference.current.value);
   };
-
-  const idReference = useRef();
-  const pwReference = useRef();
-
-  console.log(idReference);
-  console.log(pwReference);
 
   return (
     <div className='container mt-5 col-3 form'>

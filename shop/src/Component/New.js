@@ -9,7 +9,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import '../App.css';
 
-function New() {
+function New({ category }) {
   const getProduct = async () => {
     const response = await axios.get('/api/product');
     return response.data;
@@ -21,7 +21,7 @@ function New() {
   }
 
   const newData = data.filter((a, i) => {
-    return a.sort === 1;
+    return a.sort === category;
   });
 
   return (

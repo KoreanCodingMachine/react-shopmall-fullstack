@@ -2,18 +2,25 @@ import React from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import '../Style/SignUp.css';
 
 export default function SignUp() {
-  const onSubmit = (e) => {
-    e.prevendDefault();
-  };
+  const emailRef = useRef();
+  const idRef = useRef();
+  const pwRef = useRef();
+  const rePwRef = useRef();
+  const nameRef = useRef();
 
-  const emailReference = useRef();
-  const idReference = useRef();
-  const pwReference = useRef();
-  const rePwReference = useRef();
-  const nameReference = useRef();
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(emailRef.current.value);
+    console.log(idRef.current.value);
+    console.log(pwRef.current.value);
+    console.log(rePwRef.current.value);
+    console.log(nameRef.current.value);
+    axios.post('/api/account', { email: emailRef.current.value });
+  };
 
   return (
     <div className='container col-3 form'>
@@ -26,7 +33,7 @@ export default function SignUp() {
           type='email'
           placeholder='이메일'
           id='email'
-          ref={emailReference}
+          ref={emailRef}
         ></input>
         <label className='mt-2' htmlFor='id'>
           아이디
@@ -36,7 +43,7 @@ export default function SignUp() {
           type='id'
           placeholder='아이디'
           id='id'
-          ref={idReference}
+          ref={idRef}
         ></input>
         <label className='mt-2' htmlFor='pw'>
           비밀번호
@@ -46,7 +53,7 @@ export default function SignUp() {
           type='password'
           placeholder='비밀번호'
           id='pw'
-          ref={pwReference}
+          ref={pwRef}
         ></input>
         <label className='mt-2' htmlFor='re-pw'>
           비밀번호 확인
@@ -56,7 +63,7 @@ export default function SignUp() {
           type='password'
           placeholder='비밀번호 확인'
           id='re-pw'
-          ref={rePwReference}
+          ref={rePwRef}
         ></input>
         <label className='mt-2' htmlFor='name'>
           이름
@@ -66,9 +73,9 @@ export default function SignUp() {
           type='text'
           placeholder='이름'
           id='name'
-          ref={nameReference}
+          ref={nameRef}
         ></input>
-        <button className='w-100 mt-4 login' type='button' onClick={() => {}}>
+        <button className='w-100 mt-4 login' type='button' onClick={onSubmit}>
           회원가입
         </button>
       </div>
