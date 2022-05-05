@@ -19,7 +19,13 @@ export default function SignUp() {
     console.log(pwRef.current.value);
     console.log(rePwRef.current.value);
     console.log(nameRef.current.value);
-    axios.post('/api/account', { email: emailRef.current.value });
+    axios.post('/api/account', {
+      email: emailRef.current.value,
+      idRef: idRef.current.value,
+      pwRef: pwRef.current.value,
+      rePwRef: rePwRef.current.value,
+      nameRef: nameRef.current.value,
+    });
   };
 
   return (
