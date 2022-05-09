@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
+const config = require('../config/key');
 const dbConnect = () => {
-  mongoose.connect(
-    'mongodb+srv://pon03078:kis405814!!@cluster0.eehrf.mongodb.net/shoppingMall?retryWrites=true&w=majority'
-  );
+  mongoose.connect(config.mongoURI);
 };
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
