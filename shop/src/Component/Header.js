@@ -1,18 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import '../Style/Header.css';
 
 export default function Header() {
+  const { id } = useSelector((state) => state.user);
+
   return (
     <div class='navbar sticky-top' fixed='top'>
       <div className='empty'>JUNS'S MALL</div>
       <ul className='list'>
-        <li>
+        {id === '' ? (
+          <>
+            <li>
+              <Link to='./login'>Login</Link>
+            </li>
+            <li>
+              <Link to='./signup'>Join</Link>
+            </li>
+          </>
+        ) : (
+          <div>{id}</div>
+        )}
+
+        {/* <li>
           <Link to='./login'>Login</Link>
         </li>
         <li>
           <Link to='./signup'>Join</Link>
-        </li>
+        </li> */}
         <li>
           <Link to='./cart'>Cart</Link>
         </li>

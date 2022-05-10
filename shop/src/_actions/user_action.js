@@ -1,16 +1,60 @@
 import axios from 'axios';
-import { LOGIN_USER, REGISTER_USER, AUTH_USER } from './types';
+import {
+  LOGIN_USER,
+  REGISTER_USER,
+  AUTH_USER,
+  SET_LOADING,
+  SET_ERROR,
+} from './types';
 
-export function loginUser(dataToSubmit) {
-  const request = axios
-    .post('/api/users/login', dataToSubmit)
-    .then((response) => response.data);
-
+const setLoginUser = (userdata) => {
   return {
     type: LOGIN_USER,
-    payload: request,
+    payload: userdata,
   };
-}
+};
+
+const setLoading = (loading) => {
+  return {
+    type: SET_LOADING,
+    payload: loading,
+  };
+};
+
+const setError = (error) => {
+  return {
+    type: SET_ERROR,
+    payload: error,
+  };
+};
+
+export const loginUser = (dataToSubmit) => async (dispatch) => {
+  dispatch({
+    type: SET_LOADING,
+    payload: true,
+  });
+  dispatch({
+    type: SET_ERROR,
+    payload: null,
+  });
+  try {
+    const response = await axios.post('/api/users/login', dataToSubmit);
+    dispatch(setLoginUser(response.data));
+    dispatch(setLoading(false));
+  } catch (error) {
+    dispatch(setError(error.message));
+  }
+
+  // const request = axios
+  // .post('/api/users/login', dataToSubmit)
+  // .then((response) => {
+  //   dispatch(setLoginUser(response.data));
+  //   dispatch(setLoading(false));
+  // })
+  // .catch((error) => {
+  //   dispatch(setError(error.message));
+  // });
+};
 
 export function registerUser(dataToSubmit) {
   const request = axios

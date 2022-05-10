@@ -2,15 +2,16 @@ import React from 'react';
 // import { useEffect } from 'react';
 // import { useState } from 'react';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../_actions/user_action';
 import '../Style/Login.css';
 
 export default function Login(props) {
   const dispatch = useDispatch();
-
+  const { id, error, loading } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const idReference = useRef();
   const pwReference = useRef();
 
@@ -25,20 +26,20 @@ export default function Login(props) {
   //   setPassword(e.currentTarget.value);
   // };
 
+  // 선언형 프로그래밍 // 리랜더링
+  if (error === null && loading === false && id !== '') {
+    navigate('/');
+  }
   const onSubmit = (e) => {
     let body = {
-      email: idReference,
-      password: pwReference,
+      email: idReference.current.value,
+      password: pwReference.current.value,
     };
 
-    dispatch(loginUser(body)).then((res) => {
-      if (res.payload.loginSuccess) {
-        props.history.push('/');
-      } else {
-        e.preventDefault();
-        alert('다시 입력하세요');
-      }
-    });
+    dispatch(loginUser(body)); // 리랜더링하고 실행된다. , 랜더링 한 후에 실행되게 해야한다.
+    // console.log(error);
+    // console.log(loading);
+    // console.log(id);
   };
 
   return (

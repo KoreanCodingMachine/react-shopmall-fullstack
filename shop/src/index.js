@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import Test from './Test';
+import Test from './Test';
 import Login from './Component/Login';
 import SignUp from './Component/SignUp';
 import Detail from './Component/Detail';
@@ -41,6 +41,7 @@ const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* <Test></Test> */}
     <BrowserRouter>
       <Provider
         store={createStoreWithMiddleware(
