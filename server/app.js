@@ -32,6 +32,10 @@ app.get('/api/product', async function (req, res) {
   const productList = await ProductModel.find();
   res.json(productList);
 });
+app.get('/api/hello', async function (req, res) {
+  res.send('안녕하세요');
+});
+
 app.post('/api/product', async function (req, res) {
   const { name, category, price } = req.body;
   console.log(req.body);

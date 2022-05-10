@@ -4,9 +4,13 @@ import React from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../_actions/user_action';
 import '../Style/Login.css';
 
-export default function Login() {
+export default function Login(props) {
+  const dispatch = useDispatch();
+
   const idReference = useRef();
   const pwReference = useRef();
 
@@ -22,9 +26,19 @@ export default function Login() {
   // };
 
   const onSubmit = (e) => {
-    e.preventDefault();
-    console.log(idReference.current.value);
-    console.log(pwReference.current.value);
+    let body = {
+      email: idReference,
+      password: pwReference,
+    };
+
+    dispatch(loginUser(body)).then((res) => {
+      if (res.payload.loginSuccess) {
+        props.history.push('/');
+      } else {
+        e.preventDefault();
+        alert('다시 입력하세요');
+      }
+    });
   };
 
   return (
