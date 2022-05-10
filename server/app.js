@@ -4,8 +4,20 @@ const { User } = require('./model/User');
 const { auth } = require('./middleware/auth');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const config = require('./config/key');
 const app = express();
 app.use(express.json());
+
+const mongoose = require('mongoose');
+mongoose
+  .connect(config.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log('MongoDB Connected...'))
+  .catch((err) => console.log(err));
 
 //application / x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,7 +40,7 @@ app.post('/api/product', async function (req, res) {
   res.send('success');
 });
 
-app.post('/api/register', function (req, res) {
+app.post('/api/users/register', function (req, res) {
   //회원가입 할때 필요한 정보들을 client에서 가져오면
   //그것들을 데이터 베이스에 넣어준다.
 
@@ -41,7 +53,7 @@ app.post('/api/register', function (req, res) {
   });
 });
 
-app.post('/api/login', function (req, res) {
+app.post('/api/users/login', function (req, res) {
   //요청된 이메일을 데이터 베이스에서 있는지 찾는다.
   User.findOne({ email: req.body.email }, (err, user) => {
     if (!user) {
