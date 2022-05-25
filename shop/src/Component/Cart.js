@@ -1,9 +1,11 @@
 import React from 'react';
 import { Nav, Button, Table } from 'react-bootstrap';
-import { connect } from 'react-redux';
 import '../Style/Cart.css';
+import { useDispatch } from 'react-redux';
 
-function Cart(props) {
+function Cart() {
+  const dispatch = useDispatch();
+
   return (
     <div className='container'>
       <h4 className='title pt-5'>SHOPPING CART</h4>
@@ -22,87 +24,14 @@ function Cart(props) {
         <thead className='text-center'>
           <tr>
             <th>번호</th>
-            <th>상품 이미지</th>
             <th>상품명</th>
-            <th>종류</th>
             <th>수량</th>
-            <th>추가/삭제</th>
+            <th>추가</th>
             <th>삭제</th>
             <th>선택</th>
           </tr>
         </thead>
-        <tbody className='text-center'>
-          {props.state.map((a, i) => {
-            return (
-              <tr key={i}>
-                <td>{a.id + 1}</td>
-                <td>{a.name}</td>
-                <td>{a.name}</td>
-                <td>{a.type}</td>
-                <td>{a.quan}</td>
-                <td>
-                  <button
-                    onClick={() => {
-                      props.dispatch({ type: 'plus', data: a.id });
-                    }}
-                  >
-                    추가
-                  </button>
-                  <button
-                    onClick={() => {
-                      props.dispatch({ type: 'minus', data: a.id });
-                    }}
-                  >
-                    감소
-                  </button>
-                </td>
-                <td>
-                  {/* <button
-                      onClick={() => {
-                        props.dispatch({
-                          type: 'add',
-                          payload: {
-                            id: i + 1,
-                            name: '새로운 상품',
-                            quan: 1,
-                          },
-                        });
-                      }}
-                    >
-                      항목추가
-                    </button> */}
-                  <button
-                    onClick={() => {
-                      props.dispatch({
-                        type: 'subtract',
-                        data: a.id,
-                      });
-                    }}
-                  >
-                    삭제
-                  </button>
-                  {/* <button
-                      onClick={() => {
-                        props.dispatch({ type: 'plus', data: a.id });
-                      }}
-                    >
-                      +
-                    </button> */}
-                  {/* <button
-                      onClick={() => {
-                        props.dispatch({ type: 'minus', data: a.id });
-                      }}
-                    >
-                      -
-                    </button> */}
-                </td>
-                <td>
-                  <input type='checkbox' id='check' name='check'></input>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
+        <tbody className='text-center'></tbody>
       </Table>
       <div className='cart-btn mt-5'>
         <Button onClick={() => {}} variant='primary'>
@@ -163,13 +92,4 @@ function Cart(props) {
   );
 }
 
-function StateToProps(state) {
-  // console.log(state);
-  // console.log(state.reducer);
-  return {
-    state: state.reducer,
-    // state2: state.reducer2,
-  };
-}
-
-export default connect(StateToProps)(Cart);
+export default Cart;

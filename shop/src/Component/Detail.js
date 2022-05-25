@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import '../Style/Detail.css';
 
 export default function Detail() {
@@ -44,32 +44,19 @@ export default function Detail() {
               <img src={state.img} width='100%' />
             </div>
             <div className='col-7'>
-              <p className='pt-3'>아이스 쿨링 반팔티 (1개씩 구매되는 상품)</p>
-              <p>{}</p>
-              <p className='mt-3'>색상</p>
-              <Dropdowns />
-              <p className='mt-3'>사이즈</p>
-              <Dropdowns />
+              <p className='pt-3 m-lg-3'>{state.title}</p>
+              <div>
+                <Button onClick={() => {}}>구매하기</Button>
+              </div>
+              <div>
+                <Button className='mt-3' onClick={() => {}}>
+                  장바구니 담기
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
-}
-
-function Dropdowns() {
-  return (
-    <Dropdown>
-      <Dropdown.Toggle variant='success' id='dropdown-basic'>
-        Dropdown Button
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-        <Dropdown.Item href='#/action-1'>Action</Dropdown.Item>
-        <Dropdown.Item href='#/action-2'>Another action</Dropdown.Item>
-        <Dropdown.Item href='#/action-3'>Something else</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
   );
 }

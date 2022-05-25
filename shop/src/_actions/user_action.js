@@ -14,6 +14,13 @@ const setLoginUser = (userdata) => {
   };
 };
 
+const setRegisterUser = (register) => {
+  return {
+    type: REGISTER_USER,
+    payload: register,
+  };
+};
+
 const setLoading = (loading) => {
   return {
     type: SET_LOADING,
@@ -56,16 +63,34 @@ export const loginUser = (dataToSubmit) => async (dispatch) => {
   // });
 };
 
-export function registerUser(dataToSubmit) {
-  const request = axios
-    .post('/api/users/register', dataToSubmit)
-    .then((res) => res.data);
+// export function registerUser(dataToSubmit) {
+//   const request = axios
+//     .post('/api/users/register', dataToSubmit)
+//     .then((res) => res.data);
 
-  return {
-    type: REGISTER_USER,
-    payload: request,
-  };
-}
+//   return {
+//     type: REGISTER_USER,
+//     payload: request,
+//   };
+// }
+
+export const registerUser = (dataToSubmit) => async (dispatch) => {
+  dispatch({
+    type: SET_LOADING,
+    payload: true,
+  });
+  dispatch({
+    type: SET_ERROR,
+    payload: null,
+  });
+  try {
+    const response = await axios.post('/api/users/register', dataToSubmit);
+    dispatch(setRegisterUser(response.data));
+    dispatch(setLoading(false));
+  } catch (error) {
+    dispatch(setError(error.message));
+  }
+};
 
 export function auth() {
   const request = axios.get('/api/users/auth').then((res) => res.data);

@@ -17,6 +17,7 @@ import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Reducer from './_reducers';
+import Auth from './hoc/auth';
 
 const createStoreWithMiddleware = applyMiddleware(
   promiseMiddleware,

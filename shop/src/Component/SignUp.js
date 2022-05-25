@@ -1,31 +1,38 @@
 import React from 'react';
-import { useState } from 'react';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { registerUser } from '../_actions/user_action';
 import '../Style/SignUp.css';
 
-export default function SignUp() {
+export default function SignUp(props) {
+  const dispatch = useDispatch();
+  const { id, error, loading } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const emailRef = useRef();
   const idRef = useRef();
   const pwRef = useRef();
   const rePwRef = useRef();
   const nameRef = useRef();
 
+  // if (error === null && loading === false && id !== '') {
+  //   navigate('/');
+  // }
   const onSubmit = (e) => {
-    e.preventDefault();
-    console.log(emailRef.current.value);
-    console.log(idRef.current.value);
-    console.log(pwRef.current.value);
-    console.log(rePwRef.current.value);
-    console.log(nameRef.current.value);
-    axios.post('/api/account', {
+    // e.preventDefault();
+
+    // if (pwRef !== rePwRef) {
+    //   return alert('비밀번호와 비밀번호확인은 같아야합니다.');
+    // }
+
+    let body = {
       email: emailRef.current.value,
-      idRef: idRef.current.value,
-      pwRef: pwRef.current.value,
-      rePwRef: rePwRef.current.value,
-      nameRef: nameRef.current.value,
-    });
+      id: idRef.current.value,
+      pw: pwRef.current.value,
+      rePw: rePwRef.current.value,
+      name: nameRef.current.value,
+    };
+    dispatch(registerUser(body));
   };
 
   return (

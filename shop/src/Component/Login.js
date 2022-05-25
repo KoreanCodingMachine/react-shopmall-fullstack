@@ -3,7 +3,6 @@ import React from 'react';
 // import { useState } from 'react';
 import { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../_actions/user_action';
 import '../Style/Login.css';
@@ -37,9 +36,6 @@ export default function Login(props) {
     };
 
     dispatch(loginUser(body)); // 리랜더링하고 실행된다. , 랜더링 한 후에 실행되게 해야한다.
-    // console.log(error);
-    // console.log(loading);
-    // console.log(id);
   };
 
   return (
