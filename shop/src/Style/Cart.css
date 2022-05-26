@@ -17,3 +17,11 @@
     border: 1px solid gray;
     height: 600px;
 }
+
+.cart-image{
+    width: 50px;
+}
+
+.count{
+    padding: 10px;
+}

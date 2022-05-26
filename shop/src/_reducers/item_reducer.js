@@ -7,24 +7,20 @@ import {
   DECREMENT,
 } from '../_actions/types';
 
-const initialstate = {
-  cart: [],
-};
-
 export default function itemReducer(state = {}, action) {
   switch (action.type) {
     case SET_BUY:
       return { ...state, buy: action.payload };
     case SET_STORE:
-      return { ...state, store: action.payload };
+      return { ...state, item: action.payload };
     case ADD_ITEM:
-      return { ...state };
+      return { ...state, add: action.payload };
     case DELETE_ITEM:
-      return;
+      return { ...state, delete: action.payload };
     case INCREMENT:
-      return;
+      return { ...state, increase: action.payload };
     case DECREMENT:
-      return;
+      return { ...state, decrease: action.payload };
     default:
       return state;
   }

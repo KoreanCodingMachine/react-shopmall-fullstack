@@ -2,21 +2,24 @@ import React from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../_actions/item_action';
 import '../Style/Detail.css';
 
 export default function Detail() {
   const { id } = useParams();
-  // const history = useNavigate();
+  const navigate = useNavigate();
   const { state } = useLocation();
-
-  useEffect(() => {
-    console.log(state);
-  }, []);
+  const dispatch = useDispatch();
+  console.log(state);
+  // useEffect(() => {
+  //   console.log(state);
+  // }, []);
   return (
     <div className='container'>
       <div className='row'>
         <div className='col-md-6'>
-          <img src={state.img} width='60%' />
+          <img className='mt-3' src={state.img} width='60%' />
         </div>
         <div className='col-md-6 mt-4'>
           <h4 className='pt-5'>{state.title}</h4>
@@ -41,15 +44,28 @@ export default function Detail() {
         <div className='col-md-6'>
           <div className='purchase-box row'>
             <div className='col-5'>
-              <img src={state.img} width='100%' />
+              <img className='mt-3' src={state.img} width='100%' />
             </div>
             <div className='col-7'>
               <p className='pt-3 m-lg-3'>{state.title}</p>
               <div>
-                <Button onClick={() => {}}>구매하기</Button>
+                <Button
+                  onClick={() => {
+                    dispatch(addItem(state));
+                    navigate('/mypage');
+                  }}
+                >
+                  구매하기
+                </Button>
               </div>
               <div>
-                <Button className='mt-3' onClick={() => {}}>
+                <Button
+                  className='mt-3'
+                  onClick={() => {
+                    dispatch(addItem(state));
+                    navigate('/cart');
+                  }}
+                >
                   장바구니 담기
                 </Button>
               </div>

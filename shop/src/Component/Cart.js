@@ -1,11 +1,13 @@
 import React from 'react';
 import { Nav, Button, Table } from 'react-bootstrap';
 import '../Style/Cart.css';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteItem, increment, decrement } from '../_actions/item_action';
 
 function Cart() {
+  const cart = useSelector((state) => state.item.add);
   const dispatch = useDispatch();
-
+  console.log(cart);
   return (
     <div className='container'>
       <h4 className='title pt-5'>SHOPPING CART</h4>
@@ -23,25 +25,53 @@ function Cart() {
       <Table className='mt-5 w-100' bordered hover>
         <thead className='text-center'>
           <tr>
-            <th>번호</th>
             <th>상품명</th>
-            <th>수량</th>
-            <th>추가</th>
-            <th>감소</th>
+            <th>이미지</th>
+            <th>가격</th>
+            <th>수량 증가</th>
+            <th>수량 감소</th>
             <th>삭제</th>
-            <th>선택</th>
           </tr>
         </thead>
-        <tbody className='text-center'></tbody>
+        <tbody className='text-center'>
+          <tr>
+            <th>{cart.title}</th>
+            <th>
+              <img className='cart-image' src={cart.img}></img>
+            </th>
+            <th>{cart.price}</th>
+            <th>
+              <span className='count'>0</span>
+              <button
+                onClick={() => {
+                  dispatch(increment);
+                }}
+              >
+                +
+              </button>
+            </th>
+            <th>
+              <span className='count'>0</span>
+              <button
+                onClick={() => {
+                  dispatch(decrement);
+                }}
+              >
+                -
+              </button>
+            </th>
+            <th>
+              <button
+                onClick={() => {
+                  dispatch(deleteItem);
+                }}
+              >
+                delete
+              </button>
+            </th>
+          </tr>
+        </tbody>
       </Table>
-      <div className='cart-btn mt-5'>
-        <Button onClick={() => {}} variant='primary'>
-          선택 상품 주문
-        </Button>
-        <Button onClick={() => {}} variant='primary'>
-          전체 상품 주문
-        </Button>
-      </div>
 
       <div className='box row mt-5'>
         <div className='col-1'>이용안내</div>
