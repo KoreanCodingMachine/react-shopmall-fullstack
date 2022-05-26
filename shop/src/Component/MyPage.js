@@ -1,7 +1,6 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import { connect, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import '../Style/MyPage.css';
 
 function MyPage() {
@@ -17,9 +16,11 @@ function MyPage() {
             <tr>
               <th>번호</th>
               <th>상품명</th>
-              <th>종류</th>
               <th>수량</th>
-              <th>구매 날짜</th>
+              <th>추가</th>
+              <th>감소</th>
+              <th>삭제</th>
+              <th>선택</th>
             </tr>
           </thead>
           <tbody className='text-center'></tbody>

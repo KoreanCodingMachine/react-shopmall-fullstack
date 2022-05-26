@@ -27,6 +27,7 @@ function Cart() {
             <th>상품명</th>
             <th>수량</th>
             <th>추가</th>
+            <th>감소</th>
             <th>삭제</th>
             <th>선택</th>
           </tr>
