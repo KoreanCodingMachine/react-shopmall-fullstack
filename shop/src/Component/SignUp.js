@@ -21,9 +21,9 @@ export default function SignUp(props) {
   const onSubmit = (e) => {
     // e.preventDefault();
 
-    // if (pwRef !== rePwRef) {
-    //   return alert('비밀번호와 비밀번호확인은 같아야합니다.');
-    // }
+    if (pwRef !== rePwRef) {
+      return alert('비밀번호와 비밀번호확인은 같아야합니다.');
+    }
 
     let body = {
       email: emailRef.current.value,
