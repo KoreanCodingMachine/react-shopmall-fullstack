@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Button, Table } from 'react-bootstrap';
+import { Nav, Table } from 'react-bootstrap';
 import '../Style/Cart.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteItem, increment, decrement } from '../_actions/item_action';
@@ -41,20 +41,20 @@ function Cart() {
             </th>
             <th>{cart.price}</th>
             <th>
-              <span className='count'>0</span>
+              <span className='count'>{cart.count}</span>
               <button
                 onClick={() => {
-                  dispatch(increment);
+                  dispatch(increment(cart));
                 }}
               >
                 +
               </button>
             </th>
             <th>
-              <span className='count'>0</span>
+              <span className='count'>{cart.count}</span>
               <button
                 onClick={() => {
-                  dispatch(decrement);
+                  dispatch(decrement(cart));
                 }}
               >
                 -
@@ -63,7 +63,7 @@ function Cart() {
             <th>
               <button
                 onClick={() => {
-                  dispatch(deleteItem);
+                  dispatch(deleteItem(cart));
                 }}
               >
                 delete

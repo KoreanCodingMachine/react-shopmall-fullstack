@@ -1,12 +1,12 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteItem, increment, decrement } from '../_actions/item_action';
 import '../Style/MyPage.css';
 
 function MyPage() {
-  const diapatch = useDispatch();
-
-  const onSubmit = () => {};
+  const cart = useSelector((state) => state.item.add);
+  const dispatch = useDispatch();
   return (
     <div className='container'>
       <div className='row justify-content-center'>
@@ -14,24 +14,29 @@ function MyPage() {
         <Table className='mt-5 w-100' bordered hover>
           <thead className='text-center'>
             <tr>
-              <th>번호</th>
               <th>상품명</th>
-              <th>수량</th>
-              <th>추가</th>
-              <th>감소</th>
-              <th>삭제</th>
-              <th>선택</th>
+              <th>이미지</th>
+              <th>가격</th>
+              <th>구매내역 삭제</th>
             </tr>
           </thead>
           <tbody className='text-center'>
             <tr>
-              <th>번호</th>
-              <th>상품명</th>
-              <th>수량</th>
-              <th>추가</th>
-              <th>감소</th>
-              <th>삭제</th>
-              <th>선택</th>
+              <th>{cart.title}</th>
+              <th>
+                <img className='cart-image' src={cart.img}></img>
+              </th>
+              <th>{cart.price}</th>
+
+              <th>
+                <button
+                  onClick={() => {
+                    dispatch(deleteItem);
+                  }}
+                >
+                  delete
+                </button>
+              </th>
             </tr>
           </tbody>
         </Table>

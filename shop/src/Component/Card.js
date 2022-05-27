@@ -18,6 +18,7 @@ export default function Cards({ data }) {
           title: data.title,
           price: data.price,
           img: data.img,
+          count: 1,
         }}
       >
         <Card.Img
