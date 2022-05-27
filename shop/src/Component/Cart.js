@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteItem, increment, decrement } from '../_actions/item_action';
 
 function Cart() {
-  const cart = useSelector((state) => state.item.add);
+  const cart = useSelector((state) => state.cart.item);
   const dispatch = useDispatch();
-  console.log(cart);
+  console.log('cart data:', cart);
   return (
     <div className='container'>
       <h4 className='title pt-5'>SHOPPING CART</h4>
@@ -28,48 +28,48 @@ function Cart() {
             <th>상품명</th>
             <th>이미지</th>
             <th>가격</th>
-            <th>수량 증가</th>
-            <th>수량 감소</th>
+            <th>수량 증감</th>
             <th>삭제</th>
           </tr>
         </thead>
         <tbody className='text-center'>
-          <tr>
-            <th>{cart.title}</th>
-            <th>
-              <img className='cart-image' src={cart.img}></img>
-            </th>
-            <th>{cart.price}</th>
-            <th>
-              <span className='count'>{cart.count}</span>
-              <button
-                onClick={() => {
-                  dispatch(increment(cart));
-                }}
-              >
-                +
-              </button>
-            </th>
-            <th>
-              <span className='count'>{cart.count}</span>
-              <button
-                onClick={() => {
-                  dispatch(decrement(cart));
-                }}
-              >
-                -
-              </button>
-            </th>
-            <th>
-              <button
-                onClick={() => {
-                  dispatch(deleteItem(cart));
-                }}
-              >
-                delete
-              </button>
-            </th>
-          </tr>
+          {cart.map((product) => {
+            return (
+              <tr key={product.title}>
+                <th>{product.title}</th>
+                <th>
+                  <img className='cart-image' src={product.img}></img>
+                </th>
+                <th>{product.price}</th>
+                <th>
+                  <span className='count'>{product.count}</span>
+                  <button
+                    onClick={() => {
+                      dispatch(increment(product.id));
+                    }}
+                  >
+                    +
+                  </button>
+                  <button
+                    onClick={() => {
+                      dispatch(decrement(product.id));
+                    }}
+                  >
+                    -
+                  </button>
+                </th>
+                <th>
+                  <button
+                    onClick={() => {
+                      dispatch(deleteItem(product.id));
+                    }}
+                  >
+                    delete
+                  </button>
+                </th>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
 

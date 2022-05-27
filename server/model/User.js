@@ -17,6 +17,10 @@ const userSchema = mongoose.Schema({
     type: String,
     minlength: 5,
   },
+  repassword: {
+    tpye: String,
+    minlength: 5,
+  },
   lastname: {
     type: String,
     maxlength: 50,

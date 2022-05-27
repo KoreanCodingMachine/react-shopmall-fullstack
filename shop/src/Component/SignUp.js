@@ -28,8 +28,8 @@ export default function SignUp(props) {
     let body = {
       email: emailRef.current.value,
       id: idRef.current.value,
-      pw: pwRef.current.value,
-      rePw: rePwRef.current.value,
+      password: pwRef.current.value,
+      repassword: rePwRef.current.value,
       name: nameRef.current.value,
     };
     dispatch(registerUser(body));

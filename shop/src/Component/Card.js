@@ -8,13 +8,13 @@ import '../Style/Card.css';
 export default function Cards({ data }) {
   // console.log(card);
   // console.log(cardList);
-  console.log(data);
+
   return (
     <Card className='real-card col-lg-3'>
       <Link
         to={`Detail/${data._id}`}
         state={{
-          id: data.id,
+          id: data._id,
           title: data.title,
           price: data.price,
           img: data.img,

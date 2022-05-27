@@ -11,7 +11,7 @@ export default function Detail() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const dispatch = useDispatch();
-  console.log(state);
+  console.log('detail state:', state);
   // useEffect(() => {
   //   console.log(state);
   // }, []);
