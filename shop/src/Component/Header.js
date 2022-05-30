@@ -1,10 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../Style/Header.css';
 
 export default function Header() {
   const { id } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const onClickHandler = () => {
+    axios.get('/api/users/logout').then((response) => {
+      //console.log(response.data)
+      if (response.data.success) {
+        navigate('/login');
+      } else {
+        alert('로그아웃 하는데 실패 했습니다.');
+      }
+    });
+  };
 
   return (
     <div class='navbar sticky-top' fixed='top'>
@@ -20,9 +33,11 @@ export default function Header() {
             </li>
           </>
         ) : (
-          <div>{id}</div>
+          <>
+            <div>{id}</div>
+            <button onClick={onClickHandler}>logout</button>
+          </>
         )}
-
         {/* <li>
           <Link to='./login'>Login</Link>
         </li>

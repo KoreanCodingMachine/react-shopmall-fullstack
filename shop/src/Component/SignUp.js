@@ -18,13 +18,15 @@ export default function SignUp(props) {
   // if (error === null && loading === false && id !== '') {
   //   navigate('/');
   // }
+
   const onSubmit = (e) => {
     // e.preventDefault();
 
-    if (pwRef !== rePwRef) {
+    if (pwRef.current.value !== rePwRef.current.value) {
+      console.log(pwRef);
+      console.log(rePwRef);
       return alert('비밀번호와 비밀번호확인은 같아야합니다.');
     }
-
     let body = {
       email: emailRef.current.value,
       id: idRef.current.value,

@@ -7,6 +7,7 @@ import { deleteItem, increment, decrement } from '../_actions/item_action';
 function Cart() {
   const cart = useSelector((state) => state.cart.item);
   const dispatch = useDispatch();
+
   console.log('cart data:', cart);
   return (
     <div className='container'>
