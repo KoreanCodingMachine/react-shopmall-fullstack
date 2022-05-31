@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Nav, Table } from 'react-bootstrap';
 import '../Style/Cart.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteItem, increment, decrement } from '../_actions/item_action';
+import { auth } from '../_actions/user_action';
+import { useNavigate } from 'react-router-dom';
+// import { isAuth } from '../hoc/isAuth';
+
+// A값이 B컴포넌트 rerender
+// ->B컴포넌트안에 있는 C값이 A값을 갖고 있는 D 컴포넌트 rerender -> 반복
 
 function Cart() {
   const cart = useSelector((state) => state.cart.item);
   const dispatch = useDispatch();
+  const navigate = useNavigate;
+  console.log(cart);
+  useEffect(() => {
+    dispatch(auth()).then((res) => {
+      console.log(res);
+      if (!res.payload.isAuth) {
+        // alert('로그인한 유저만 들어갈 수 있습니다.');
+        // navigate('/login');
+      }
+    });
+  }, []);
 
   console.log('cart data:', cart);
+
   return (
     <div className='container'>
       <h4 className='title pt-5'>SHOPPING CART</h4>

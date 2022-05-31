@@ -53,7 +53,13 @@ root.render(
       >
         <QueryClientProvider client={queryClient}>
           <Routes>
-            <Route path='/' element={<App />} />
+            <Route
+              path='/'
+              children={() => {
+                Auth(App, false);
+              }}
+              element={<App />}
+            />
             <Route path='/login' element={<Login />} />
             <Route path='/signUp' element={<SignUp />} />
             <Route path='/detail/:id' element={<Detail />} />
