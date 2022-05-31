@@ -5,9 +5,10 @@ import '../Style/Card.css';
 
 // json data 받은걸로 map 함수 써서 해보자
 
-export default function Cards({ data }) {
+const Cards = ({ data }) => {
   // console.log(card);
   // console.log(cardList);
+  // console.log(data); 2번씩 찍힘 -> 재랜더링
 
   return (
     <Card className='real-card col-lg-3'>
@@ -37,4 +38,6 @@ export default function Cards({ data }) {
       </Card.Body>
     </Card>
   );
-}
+};
+
+export default React.memo(Cards);

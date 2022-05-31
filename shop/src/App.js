@@ -9,7 +9,7 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import './App.css';
 
-function App() {
+const App = () => {
   const getProduct = async () => {
     const response = await axios.get('/api/product');
     return response.data;
@@ -19,7 +19,7 @@ function App() {
   if (isLoading) {
     return <div>loading</div>;
   }
-
+  // console.log(data);
   return (
     <div className='App-row'>
       <Header />
@@ -39,6 +39,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default React.memo(App);

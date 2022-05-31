@@ -6,12 +6,12 @@ import { useDispatch } from 'react-redux';
 import { addItem } from '../_actions/item_action';
 import '../Style/Detail.css';
 
-export default function Detail() {
+const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { state } = useLocation();
   const dispatch = useDispatch();
-  console.log('detail state:', state);
+  console.log('detail state:', state); // 2번씩 찍힘 -> 재랜더링
   // useEffect(() => {
   //   console.log(state);
   // }, []);
@@ -75,4 +75,6 @@ export default function Detail() {
       </div>
     </div>
   );
-}
+};
+
+export default React.memo(Detail);

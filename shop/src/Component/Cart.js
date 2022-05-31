@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Nav, Table } from 'react-bootstrap';
 import '../Style/Cart.css';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,17 +10,18 @@ import { useNavigate } from 'react-router-dom';
 // A값이 B컴포넌트 rerender
 // ->B컴포넌트안에 있는 C값이 A값을 갖고 있는 D 컴포넌트 rerender -> 반복
 
-function Cart() {
+const Cart = () => {
   const cart = useSelector((state) => state.cart.item);
   const dispatch = useDispatch();
-  const navigate = useNavigate;
-  console.log(cart);
+  const navigate = useNavigate();
+  // console.log(cart); 두번씩 찍힘 -> 재랜더링
+
   useEffect(() => {
     dispatch(auth()).then((res) => {
-      console.log(res);
+      console.log('auth:', res);
       if (!res.payload.isAuth) {
-        // alert('로그인한 유저만 들어갈 수 있습니다.');
-        // navigate('/login');
+        //모달 ui 만들기 alert는 자바스크립트 실행환경을 멈춰버림 사용 x
+        navigate('/login');
       }
     });
   }, []);
@@ -140,6 +141,6 @@ function Cart() {
       </div>
     </div>
   );
-}
+};
 
-export default Cart;
+export default React.memo(Cart);
